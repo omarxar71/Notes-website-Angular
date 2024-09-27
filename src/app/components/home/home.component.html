@@ -1,0 +1,88 @@
+
+
+
+<!-- Button trigger modal -->
+<div class="text-center">
+    <button type="button" class=" p-3 m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Note
+      </button>
+</div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formNotes">
+            <div class="mb-3">
+              <label for="title" class="col-form-label">Title:</label>
+              <input formControlName="title" type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+              <label for="Content" class="col-form-label">Content:</label>
+              <input formControlName="content" class="form-control" id="Content">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="addNote()">Add</button>
+            </div>
+          </form>
+          
+        </div>
+       
+      </div>
+    </div>
+  </div>
+<div class="container">
+  <div class="row">
+    @for (item  of allUsernotes; track $index) {
+      
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body ">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.content}}</p>
+            <button (click)="pathchForm(item,item._id)" type="button" class="mx-3 btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModall">
+              Update
+            </button>
+            <a   class="btn btn-danger" (click)="delteNote(item._id)">delete</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Update button Modal  -->
+
+  <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="updateFormNotes" >
+            <div class="mb-3">
+              <label for="title" class="col-form-label">Update Title:</label>
+              <input formControlName="title" type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+              <label for="Content" class="col-form-label">Update Content:</label>
+              <input formControlName="content" class="form-control" id="Content">
+            </div>
+            <div class="modal-footer">
+              <button (click)="UpdagteNote(itemID)" type="button" class="btn btn-warning" data-bs-dismiss="modal">Update</button>
+            </div>
+          </form>
+          
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+

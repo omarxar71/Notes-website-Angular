@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.active{
+    background-color: green !important;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    color: white !important;
+}
